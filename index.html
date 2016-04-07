@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css\css1.css">
+    </head>
+    <body>
+        <div id = "person" ></div>
+        <div id = "p1" ></div>
+        <div id = "p2" ></div>
+        <div id = "p3" ></div>
+        <div id = "p4" ></div>
+        <div id = "p5" ></div>
+        <select id="source">
+            <option value="0" selected="selected">p1</option>
+            <option value="1">p2</option>
+            <option value="2">p3</option>
+            <option value="3">p4</option>
+            <option value="4">p5</option>
+        </select>
+        
+        <select id="destination">
+            <option value="0">p1</option>
+            <option value="1">p2</option>
+            <option value="2">p3</option>
+            <option value="3">p4</option>
+            <option value="4" selected="selected">p5</option>
+        </select>
+                
+        <button id="start">Click Me!</button>
+        <script src="js\js1.js"></script>
+        <script>
+            document.getElementById("start").onclick = function(){js1.start();}
+        </script>
+    </body>
+</html>
