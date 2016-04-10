@@ -9,26 +9,7 @@
     left: 290px;
     top: 590px;
 }
-
 #p1 {
-    background: #991111;
-    width: 10px;
-    height: 10px;
-    border-radius: 25px;    
-    position: absolute;
-    left: 300px;
-    top: 500px;   
-}
-#p2 {
-    background: #991111;
-    width: 10px;
-    height: 10px;
-    border-radius: 25px;    
-    position: absolute;
-    left: 500px;
-    top: 500px;
-}
-#p4 {
     background: #991111;
     width: 10px;
     height: 10px;
@@ -37,16 +18,16 @@
     left: 300px;
     top: 600px;
 }
-#p3 {
+#p2 {
     background: #991111;
     width: 10px;
     height: 10px;
     border-radius: 25px;    
     position: absolute;
-    left: 500px;
-    top: 200px;
+    left: 300px;
+    top: 500px;   
 }
-#p5 {
+#p3 {
     background: #991111;
     width: 10px;
     height: 10px;
@@ -54,4 +35,23 @@
     position: absolute;
     left: 300px;
     top: 400px;
+}
+#p4 {
+    background: #991111;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;    
+    position: absolute;
+    left: 500px;
+    top: 500px;
+}
+
+#p5 {
+    background: #991111;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;    
+    position: absolute;
+    left: 500px;
+    top: 200px;
 }
