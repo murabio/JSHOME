@@ -12,7 +12,7 @@ if (typeof js1 == "undefined") {
             new Array(1, 0, 1, 1, 0),
             new Array(0, 1, 0, 0, 0),
             new Array(0, 1, 0, 0, 1),
-            new Array(0, 0, 0, 1, 0)
+           new Array(0, 0, 0, 1, 0)
         ),
         positionAbs: 0,
         positionRel: 0,
@@ -28,7 +28,7 @@ if (typeof js1 == "undefined") {
         },
 
         start: function() {
-            js1.poi = JSON.parse(js1.GetText("http://localhost:8080/json/json1.json"));
+            js1.poi = JSON.parse(js1.GetText(location.href+"/json/json1.json"));
             var sVal = js1.positionAbs;
             var destination = document.getElementById("destination");
             var dVal = destination.options[destination.selectedIndex].value;
