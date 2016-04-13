@@ -5,22 +5,21 @@
 </head>
 
 <body>
+    <div id="img1"></div>
     <div id="person"></div>
-    <div id="p1"></div>
+    <!--<div id="p1"></div>
     <div id="p2"></div>
     <div id="p3"></div>
     <div id="p4"></div>
-    <div id="p5"></div>
-
+    <div id="p5"></div>-->
+    <div id="poi"></div>
     <select id="destination">
-        <option value="0">p1</option>
-        <option value="1">p2</option>
-        <option value="2">p3</option>
-        <option value="3">p4</option>
-        <option value="4" selected="selected">p5</option>
+
     </select>
 
     <button id="start">Click Me!</button>
+
+    <div id="mouse"></div>
 
     <div id="position"></div>
 
@@ -28,6 +27,12 @@
     <script src="js\js1.js"></script>
     <script>
         document.getElementById("start").onclick = function(){js1.start();}
+        document.body.onclick = function (event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            var coords = "X coords: " + x + ", Y coords: " + y;
+            document.getElementById("mouse").innerHTML = coords;
+        }
     </script>
 </body>
 

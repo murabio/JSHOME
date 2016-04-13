@@ -5,36 +5,56 @@ if (typeof js1 == "undefined") {
     var js1 = {
 
         person: null,
-        personX: 290,
-        personY: 590,
+        personX: 270,
+        personY: 430,
         adjacencyMatrix: new Array(
             new Array(0, 1, 0, 0, 0),
             new Array(1, 0, 1, 1, 0),
             new Array(0, 1, 0, 0, 0),
             new Array(0, 1, 0, 0, 1),
-           new Array(0, 0, 0, 1, 0)
+            new Array(0, 0, 0, 1, 0)
         ),
-        positionAbs: 0,
+        positionAbs: 6,
         positionRel: 0,
         poi: null,
         timer: null,
 
         init: function() {
-
+            js1.adjacencyMatrix = JSON.parse(js1.GetText(location.href + "/json/json2.json"));
+            var selectList = document.getElementById("destination");
+            js1.poi = JSON.parse(js1.GetText(location.href + "/json/json1.json"));
             js1.person = document.getElementById("person");
             js1.person.style.position = "absolute";
-            js1.person.style.left = "290px";
-            js1.person.style.top = "590px";
+            js1.person.style.left = js1.personX + "px";
+            js1.person.style.top = js1.personY + "px";
+            for (var i = 0; i < js1.poi.p.length; i++) {
+                var div = document.createElement("div");
+                div.style.background = "#991111";
+                div.style.width = "10px";
+                div.style.height = "10px";
+                div.style.borderRadius = "25px";
+                div.style.position = "absolute";
+                div.style.left = js1.poi.p[i].x;
+                div.style.top = js1.poi.p[i].y;
+                document.getElementById("poi").appendChild(div);
+
+                var option = document.createElement("option");
+                option.value = i;
+                option.text = "p" + (i + 1);
+                selectList.appendChild(option);
+            }
+
+
         },
 
         start: function() {
-            js1.poi = JSON.parse(js1.GetText(location.href+"/json/json1.json"));
+
             var sVal = js1.positionAbs;
             var destination = document.getElementById("destination");
             var dVal = destination.options[destination.selectedIndex].value;
             js1.p = js1.dijkstra(parseInt(sVal), parseInt(dVal));
             js1.positionRel = 0;
-            js1.timer = setInterval(js1.myTimer, 20);
+            js1.timer = setInterval(js1.myTimer, 45);
         },
 
         myTimer: function() {
@@ -44,16 +64,31 @@ if (typeof js1 == "undefined") {
             var y = nextPoi[1];
             var px = js1.personX;
             var py = js1.personY;
+            var diffx = 1, diffy = 1, rapx = 1, rapy = 1;
 
+            diffx = x - px;
+            if (x < px)
+                diffx = -diffx;
+            diffy = y - py;
+            if (y < py)
+                diffy = -diffy;
+
+
+            if (diffy > 0 && diffx < diffy) {
+                rapx = diffx / diffy;
+            }
+            if (diffx > 0 && diffy < diffx) {
+                rapy = diffy / diffx;
+            }
             if (px < x)
-                js1.personX++;
+                js1.personX = js1.personX + (5 * rapx);
             else if (px > x)
-                js1.personX--;
+                js1.personX = js1.personX - (5 * rapx);
 
             if (py < y)
-                js1.personY++;
+                js1.personY = js1.personY + (5 * rapy);
             else if (py > y)
-                js1.personY--;
+                js1.personY = js1.personY - (5 * rapy);
 
             if (px == x && py == y) {
                 if (i == js1.p.length - 1) {
@@ -61,18 +96,19 @@ if (typeof js1 == "undefined") {
                 }
                 js1.positionRel++;
             }
-        
+
             for (var j = 0; j < js1.poi.p.length; j++) {
-                if (px + 10 == js1.poi.p[j].x && py + 10 == js1.poi.p[j].y)
+                if (parseInt(px) + 5 == parseInt(js1.poi.p[j].x) && parseInt(py) + 5 == parseInt(js1.poi.p[j].y)) {
                     js1.positionAbs = j;
+                }
             }
             /**
              * Commentato perchè per serve solo per debug
              */
-            // var div = document.getElementById('position');
-            // div.innerHTML = 'Position abs ' + js1.positionAbs;
-            // div.innerHTML += '</br>';
-            // div.innerHTML += 'Position rel ' + (parseInt(js1.positionRel)-1);      
+            var div = document.getElementById('position');
+            div.innerHTML = 'Position abs ' + js1.positionAbs;
+            div.innerHTML += '</br>';
+            div.innerHTML += 'Position rel ' + (parseInt(js1.positionRel) - 1);
             js1.person.style.left = (js1.personX) + "px";
             js1.person.style.top = (js1.personY) + "px";
         },
@@ -125,16 +161,12 @@ if (typeof js1 == "undefined") {
             }
             resIndex.push(G[last].name);
             resIndex = resIndex.reverse();
-            var resTot = new Array(
-                new Array(290, 590),
-                new Array(290, 490),
-                new Array(290, 390),
-                new Array(490, 490),
-                new Array(490, 190)
-            );
             var result = new Array();
             for (var i = 0; i < resIndex.length; i++) {
-                result.push(resTot[resIndex[i]]);
+                var poi = new Array();
+                poi.push(js1.poi.p[resIndex[i]].x - 5);
+                poi.push(js1.poi.p[resIndex[i]].y - 5);
+                result.push(poi);
             }
             js1.person.style.left = result[0][0] + "px";
             js1.person.style.top = result[0][1] + "px";
