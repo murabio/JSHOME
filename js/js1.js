@@ -7,13 +7,7 @@ if (typeof js1 == "undefined") {
         person: null,
         personX: 270,
         personY: 430,
-        adjacencyMatrix: new Array(
-            new Array(0, 1, 0, 0, 0),
-            new Array(1, 0, 1, 1, 0),
-            new Array(0, 1, 0, 0, 0),
-            new Array(0, 1, 0, 0, 1),
-            new Array(0, 0, 0, 1, 0)
-        ),
+        adjacencyMatrix: null,
         positionAbs: 6,
         positionRel: 0,
         poi: null,
