@@ -23,7 +23,7 @@ if (typeof js1 == "undefined") {
             js1.person.style.top = js1.personY + "px";
             for (var i = 0; i < js1.poi.p.length; i++) {
                 var div = document.createElement("div");
-                div.style.background = "#991111";
+                div.style.background =  "#fffff";// "#991111";
                 div.style.width = "10px";
                 div.style.height = "10px";
                 div.style.borderRadius = "25px";
