@@ -48,7 +48,7 @@ if (typeof js1 == "undefined") {
             var dVal = destination.options[destination.selectedIndex].value;
             js1.p = js1.dijkstra(parseInt(sVal), parseInt(dVal));
             js1.positionRel = 0;
-            js1.timer = setInterval(js1.myTimer, 45);
+            js1.timer = setInterval(js1.myTimer, 20);
         },
 
         myTimer: function() {
@@ -75,14 +75,14 @@ if (typeof js1 == "undefined") {
                 rapy = diffy / diffx;
             }
             if (px < x)
-                js1.personX = js1.personX + (5 * rapx);
+                js1.personX = js1.personX + (1 * rapx);
             else if (px > x)
-                js1.personX = js1.personX - (5 * rapx);
+                js1.personX = js1.personX - (1 * rapx);
 
             if (py < y)
-                js1.personY = js1.personY + (5 * rapy);
+                js1.personY = js1.personY + (1 * rapy);
             else if (py > y)
-                js1.personY = js1.personY - (5 * rapy);
+                js1.personY = js1.personY - (1 * rapy);
 
             if (px == x && py == y) {
                 if (i == js1.p.length - 1) {
