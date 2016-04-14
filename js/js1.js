@@ -4,6 +4,7 @@
 if (typeof js1 == "undefined") {
     var js1 = {
 
+        jsonObj: null,
         person: null,
         personX: 270,
         personY: 430,
@@ -14,11 +15,12 @@ if (typeof js1 == "undefined") {
         timer: null,
 
         init: function() {
-            js1.adjacencyMatrix = JSON.parse(js1.GetText(location.href + "/json/json2.json"));
+            jsonObj = JSON.parse(js1.GetText(location.href + "/json/json1.json"));
+            js1.adjacencyMatrix = jsonObj;
             var img1 = document.getElementById("img1");
             img1.style.backgroundImage = "url('"+location.href+"/img/home.png')";
             var selectList = document.getElementById("destination");
-            js1.poi = JSON.parse(js1.GetText(location.href + "/json/json1.json"));
+            js1.poi = jsonObj;
             js1.person = document.getElementById("person");
             js1.person.style.position = "absolute";
             js1.person.style.left = js1.personX + "px";
@@ -36,7 +38,7 @@ if (typeof js1 == "undefined") {
 
                 var option = document.createElement("option");
                 option.value = i;
-                option.text = "p" + (i + 1);
+                option.text = js1.poi.description[i];
                 selectList.appendChild(option);
             }
 
