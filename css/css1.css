@@ -1,5 +1,5 @@
 #img1 {
-    background-image: url("http://2.230.161.16:2080/img/home.png");
+    background-image: url("http://localhost:port/img/home.png");
     background-repeat: no-repeat;
     background-size:cover;
     background-position: 
