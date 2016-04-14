@@ -15,6 +15,8 @@ if (typeof js1 == "undefined") {
 
         init: function() {
             js1.adjacencyMatrix = JSON.parse(js1.GetText(location.href + "/json/json2.json"));
+            var img1 = document.getElementById("img1");
+            img1.style.backgroundImage = "url('"+location.href+"/img/home.png')";
             var selectList = document.getElementById("destination");
             js1.poi = JSON.parse(js1.GetText(location.href + "/json/json1.json"));
             js1.person = document.getElementById("person");
